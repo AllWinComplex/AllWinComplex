@@ -19,17 +19,12 @@ $ratchet-font-path: '/assets/fonts/ratchet';
   padding: 0.2em 0;
 }
 
-/* Responsive: Portrait tablets and up */
-@media screen and (min-width: 768px) {
-  .container {
-    max-width: 730px;
-  }
-}
 
 // Component styles are injected through gulp
 /* inject:scss */
 @import 'admin/admin';
 @import 'main/main';
+@import 'welcome/welcome';
 @import '../components/footer/footer';
 @import '../components/oauth-buttons/oauth-buttons';
 /* endinject */
