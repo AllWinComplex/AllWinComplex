@@ -18,7 +18,7 @@ export default angular.module('awcApp.welcomeCanvas', [])
     var mouseXOnMouseDown = 0;
     var targetRotation = 0;
     var targetRotationOnMouseDown = 0;
-     
+
     init();
     animate();
      
@@ -48,10 +48,10 @@ export default angular.module('awcApp.welcomeCanvas', [])
           material
         );
         scene.add(inner);
+        
 
 
-
-        lightBack = new THREE.DirectionalLight( 0xffffff, 5, 1000 );
+        lightBack = new THREE.DirectionalLight( 0xff00ff, 5, 1000 );
         lightBack.position.set( 0, 0, 400 );
         scene.add( lightBack );
 
@@ -86,32 +86,6 @@ export default angular.module('awcApp.welcomeCanvas', [])
 
     
 
-    function onDocumentTouchStart( event ) {
-
-      if ( event.touches.length === 1 ) {
-
-        event.preventDefault();
-
-        mouseXOnMouseDown = event.touches[ 0 ].pageX - windowHalfX;
-        targetRotationOnMouseDown = targetRotation;
-
-      }
-
-    }
-
-    function onDocumentTouchMove( event ) {
-
-      if ( event.touches.length === 1 ) {
-
-        event.preventDefault();
-
-        mouseX = event.touches[ 0 ].pageX - windowHalfX;
-        targetRotation = targetRotationOnMouseDown + ( mouseX - mouseXOnMouseDown ) * 0.05;
-
-      }
-
-    }
-     
     function animate() {
      
         requestAnimationFrame( animate );
@@ -138,28 +112,32 @@ export default angular.module('awcApp.welcomeCanvas', [])
       restrict: 'EA',
       link: function(scope, element, attrs) {
 
-        element[0].appendChild( renderer.domElement );
+        var parentContainer = element.parent().parent()[0];
+
+        parentContainer.appendChild( renderer.domElement );
         
         //element.text('this is the welcomeCanvas directive');
           
         function initLis(){
-            element[0].addEventListener( 'mousedown', onDocumentMouseDown, false );
-            element[0].addEventListener( 'touchstart', onDocumentTouchStart, false );
-            element[0].addEventListener( 'touchmove', onDocumentTouchMove, false );
+            parentContainer.addEventListener( 'mousedown', onDocumentMouseDown, false );
+            parentContainer.addEventListener( 'touchstart', onDocumentTouchStart, false );
+            parentContainer.addEventListener( 'touchmove', onDocumentTouchMove, false );
         }
         initLis();
 
 
         function onDocumentMouseDown( event ) {
 
-          event.preventDefault();
+          //event.preventDefault();
 
-          element[0].addEventListener( 'mousemove', onDocumentMouseMove, false );
-          element[0].addEventListener( 'mouseup', onDocumentMouseUp, false );
-          element[0].addEventListener( 'mouseout', onDocumentMouseOut, false );
+          parentContainer.addEventListener( 'mousemove', onDocumentMouseMove, false );
+          parentContainer.addEventListener( 'mouseup', onDocumentMouseUp, false );
+          parentContainer.addEventListener( 'mouseout', onDocumentMouseOut, false );
 
           mouseXOnMouseDown = event.clientX - windowHalfX;
           targetRotationOnMouseDown = targetRotation;
+
+
 
         }
 
@@ -173,19 +151,47 @@ export default angular.module('awcApp.welcomeCanvas', [])
 
         function onDocumentMouseUp( event ) {
 
-          element[0].removeEventListener( 'mousemove', onDocumentMouseMove, false );
-          element[0].removeEventListener( 'mouseup', onDocumentMouseUp, false );
-          element[0].removeEventListener( 'mouseout', onDocumentMouseOut, false );
+          parentContainer.removeEventListener( 'mousemove', onDocumentMouseMove, false );
+          parentContainer.removeEventListener( 'mouseup', onDocumentMouseUp, false );
+          parentContainer.removeEventListener( 'mouseout', onDocumentMouseOut, false );
 
         }
 
         function onDocumentMouseOut( event ) {
 
-          element[0].removeEventListener( 'mousemove', onDocumentMouseMove, false );
-          element[0].removeEventListener( 'mouseup', onDocumentMouseUp, false );
-          element[0].removeEventListener( 'mouseout', onDocumentMouseOut, false );
+          parentContainer.removeEventListener( 'mousemove', onDocumentMouseMove, false );
+          parentContainer.removeEventListener( 'mouseup', onDocumentMouseUp, false );
+          parentContainer.removeEventListener( 'mouseout', onDocumentMouseOut, false );
 
         }
+
+        function onDocumentTouchStart( event ) {
+
+          if ( event.touches.length === 1 ) {
+
+            // event.preventDefault();
+
+            mouseXOnMouseDown = event.touches[ 0 ].pageX - windowHalfX;
+            targetRotationOnMouseDown = targetRotation;
+
+          }
+
+        }
+
+        function onDocumentTouchMove( event ) {
+
+          if ( event.touches.length === 1 ) {
+
+            //event.preventDefault();
+
+            mouseX = event.touches[ 0 ].pageX - windowHalfX;
+            targetRotation = targetRotationOnMouseDown + ( mouseX - mouseXOnMouseDown ) * 0.05;
+
+          }
+
+        }
+         
+        
 
       }
     };

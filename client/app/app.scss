@@ -6,6 +6,8 @@ $ratchet-font-path: '/assets/fonts/ratchet';
 @import '~goratchet/sass/theme-ios';
 
 
+@import url(https://fonts.googleapis.com/css?family=Raleway:100);
+
 // @import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,900|Roboto:300,500,700,900);
 
 /**
@@ -20,6 +22,31 @@ $ratchet-font-path: '/assets/fonts/ratchet';
 }
 
 
+.tall-50{
+	height: 50px;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus
+input:-webkit-autofill, 
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  border: 0 !important;
+  border-radius: 6px !important;
+  background-color: rgba(0,0,0,0.1) !important;
+
+  -webkit-text-fill-color: black;
+  -webkit-box-shadow: 0 0 0px 1000px rgba(0,0,0,0) inset;
+  transition: background-color 5000s ease-in-out 0s;
+
+}
+
+
 // Component styles are injected through gulp
 /* inject:scss */
 @import 'admin/admin';
@@ -28,3 +55,6 @@ $ratchet-font-path: '/assets/fonts/ratchet';
 @import '../components/footer/footer';
 @import '../components/oauth-buttons/oauth-buttons';
 /* endinject */
+
+
+@import './app.animate.scss';

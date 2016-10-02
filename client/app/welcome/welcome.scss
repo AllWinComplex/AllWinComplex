@@ -1,41 +1,66 @@
-@keyframes fadeInDown {
+.awc-welcome-banner {
+    font-size: 75px;
+    line-height: 1.5;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 100;
+    text-align: center;
+    color: #3514d8;
+    background-image: linear-gradient(92deg,#3514d8,#39d6c0);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: hue 10s infinite linear;
+}
+
+@-webkit-keyframes hue {
   from {
-    opacity: 0;
-    transform: translate3d(0, -100%, 0);
+    filter: hue-rotate(0deg);
   }
 
   to {
-    opacity: 1;
-    transform: none;
+    filter: hue-rotate(360deg);
   }
 }
 
-.fadeInDown {
-  animation-name: fadeInDown;
+
+
+.awc-bgw{
+  position: relative;
+  width: 100%;
+  height: calc(100vh - 50px - 44px);
 }
 
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translate3d(0, 100%, 0);
-  }
-
-  to {
-    opacity: 1;
-    transform: none;
-  }
+.awc-bg{
+  position: absolute;
+  top: 0px;
+  left: 0px;
 }
 
-.fadeInUp {
-  animation-name: fadeInUp;
+.awc-fg{
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 100%;
+  height: 100%;
+  overflow: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+
+.center-box{
+  margin: 0 auto;
+}
+
+.center-flex{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.awc-input-grey{
+  background-color: rgba(0,0,0,0.1) !important;
+  border: 0 !important;
+  border-radius: 6px !important;
 }
 
 
-.animated {
-  animation-duration: 1s;
-  animation-fill-mode: both;
-}
-
-.animated.infinite {
-  animation-iteration-count: infinite;
-}

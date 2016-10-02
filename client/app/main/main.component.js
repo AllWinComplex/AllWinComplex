@@ -14,6 +14,8 @@ export class MainController {
     $scope.$on('$destroy', function() {
       socket.unsyncUpdates('thing');
     });
+
+    $scope.enterNewThing = false;
   }
 
   $onInit() {

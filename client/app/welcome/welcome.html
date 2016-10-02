@@ -1,13 +1,48 @@
-<header class="bar bar-nav animated fadeInDown">
-  <h1 class="title">All Win Complex</h1>
+<header class="bar bar-nav">
+  <h1 class="title animated fadeInDown">All Win Complex</h1>
 </header>
 
 <!-- Wrap all non-bar HTML in the .content div (this is actually what scrolls) -->
-<div class="content">
-	<welcome-canvas></welcome-canvas>
+<div class="content" ng-if="$ctrl.isLoggedIn()">
+	<div class="awc-bgw">
+		<div class="awc-bg">
+			<welcome-canvas class="opacity50"></welcome-canvas>
+		</div>
+		<div class="awc-fg center-flex">
+			<h1 class="awc-welcome-banner">
+				Welcome Back!
+				<br>
+				{{ $ctrl.getCurrentUser().name }}
+			</h1>
+		</div>
+	</div>
 </div>
 
-<tab-bar class=" animated fadeInUp"></tab-bar>
+<div class="content" ng-if="!$ctrl.isLoggedIn()">
+	<div class="awc-bgw">
+		<div class="awc-bg">
+			<welcome-canvas class="opacity50"></welcome-canvas>
+		</div>
+		<div class="awc-fg ">
+			<div class="center-box">
+				<h1 class="awc-welcome-banner">
+					Login
+				</h1>
+				
+				<form>
+				  <input class="awc-input-grey" type="text" placeholder="email">
+				  <input class="awc-input-grey" type="password" placeholder="password">
+				  <button class="btn btn-positive btn-block">Login</button>
+				</form>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<tab-bar class=""></tab-bar>
 
 
 

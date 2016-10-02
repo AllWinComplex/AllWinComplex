@@ -26,6 +26,9 @@ import footer from '../components/footer/footer.component';
 import main from './main/main.component';
 import welcome from './welcome/welcome.component';
 
+import inBound from './status/inBound/inBound.component';
+import outBound from './status/outBound/outBound.component';
+
 import constants from './app.constants';
 import util from '../components/util/util.module';
 import socket from '../components/socket/socket.service';
@@ -37,6 +40,7 @@ import welcomeCanvas from './components/welcomeCanvas/welcomeCanvas.directive';
 import './app.scss';
 
 angular.module('awcApp', [
+    inBound, outBound,
     welcome, welcomeCanvas, 
     ngCookies, ngResource, ngSanitize, 'btford.socket-io', uiRouter, _Auth,
     account, admin, navbar, footer, main, constants, socket, util, tabBar
