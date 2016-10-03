@@ -18,7 +18,11 @@ export class WelcomeComponent {
     this.getCurrentUser = Auth.getCurrentUserSync;
 
     this.message = 'Hello';
+
+
   }
+
+
 }
 
 export default angular.module('awcApp.welcome', [uiRouter])

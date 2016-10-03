@@ -10,6 +10,11 @@
   
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    
+    <style type="text/css">
+      .welcome-container{height:100vh;display:flex;align-items:center;}
+      .welcome-spinner{width:50vmin;height:50vmin;margin: 0px auto;background-color:#ccc;border-radius:100%;-webkit-animation:sk-scaleout 1s infinite ease-in-out;animation:sk-scaleout 1s infinite ease-in-out}@-webkit-keyframes sk-scaleout{0%{-webkit-transform:scale(0)}100%{-webkit-transform:scale(1);opacity:0}}@keyframes sk-scaleout{0%{-webkit-transform:scale(0);transform:scale(0)}100%{-webkit-transform:scale(1);transform:scale(1);opacity:0}}
+    </style>
 
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 </head>
@@ -29,9 +34,13 @@
       ga('send', 'pageview');
     </script>
     
-    
+    <div ui-view="">
+      
+      <div class="welcome-container">
+        <div class="welcome-spinner"></div>
+      </div>
 
-    <div ui-view="" ng-cloak></div>
+    </div>
     
 </body>
 </html>

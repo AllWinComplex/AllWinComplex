@@ -1,4 +1,4 @@
-<nav class="bar bar-tab">
+<nav class="bar bar-tab" ng-if="$ctrl.isLoggedIn()">
   <a class="tab-item" ui-sref-active="active animated tada" ui-sref="welcome">
     <span class="icon icon-home"></span>
     <span class="tab-label">Home</span>
@@ -21,5 +21,20 @@
     <span class="icon icon-more-vertical"></span>
     <span class="tab-label">More</span>
   </a>
+</nav>
 
+
+<nav class="bar bar-tab" ng-if="!$ctrl.isLoggedIn()">
+  <a class="tab-item" ui-sref-active="active animated tada" ui-sref="welcome">
+    <span class="icon icon-star-filled"></span>
+    <span class="tab-label">Welcome</span>
+  </a>
+  <a class="tab-item" ui-sref-active="active animated tada" ui-sref="login">
+    <span class="icon icon-person"></span>
+    <span class="tab-label">Login</span>
+  </a>
+  <a class="tab-item" ui-sref-active="active animated tada" ui-sref="signup">
+    <span class="icon icon-plus"></span>
+    <span class="tab-label">Sign Up</span>
+  </a>
 </nav>

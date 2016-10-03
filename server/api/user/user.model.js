@@ -8,6 +8,17 @@ const authTypes = ['github', 'twitter', 'facebook', 'google'];
 
 var UserSchema = new Schema({
   name: String,
+  username: {
+    type: String,
+    lowercase: true,
+    required() {
+      if(authTypes.indexOf(this.provider) === -1) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  },
   email: {
     type: String,
     lowercase: true,
@@ -79,6 +90,17 @@ UserSchema
     return email.length;
   }, 'Email cannot be blank');
 
+
+// Validate empty username
+UserSchema
+  .path('username')
+  .validate(function(username) {
+    if(authTypes.indexOf(this.provider) !== -1) {
+      return true;
+    }
+    return username.length;
+  }, 'Username cannot be blank');
+
 // Validate empty password
 UserSchema
   .path('password')
@@ -111,6 +133,30 @@ UserSchema
         throw err;
       });
   }, 'The specified email address is already in use.');
+
+
+// Validate uniqueness of username
+UserSchema
+  .path('username')
+  .validate(function(value, respond) {
+    if(authTypes.indexOf(this.provider) !== -1) {
+      return respond(true);
+    }
+
+    return this.constructor.findOne({ username: value }).exec()
+      .then(user => {
+        if(user) {
+          if(this.id === user.id) {
+            return respond(true);
+          }
+          return respond(false);
+        }
+        return respond(true);
+      })
+      .catch(function(err) {
+        throw err;
+      });
+  }, 'The specified username is already in use.');
 
 var validatePresenceOf = function(value) {
   return value && value.length;

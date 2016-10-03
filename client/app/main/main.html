@@ -1,10 +1,10 @@
 <header class="bar bar-nav">
-  <h1 class="title">Example</h1>
-  <a class="icon icon-compose pull-right" ng-click="$ctrl.enterNewThing = !$ctrl.enterNewThing"></a>
+  <h1 class="title"><span  ng-click="$ctrl.showPopUp = !!!$ctrl.showPopUp">Example <span class="icon icon-caret"></span> </span></h1>
+  <a class="icon icon-compose pull-right" ng-click="$ctrl.toggleModal()"></a>
 </header>
 
-<!-- Wrap all non-bar HTML in the .content div (this is actually what scrolls) -->
 <div class="content">
+
 
   <p class="content-padded">
     <navbar></navbar>
@@ -19,22 +19,48 @@
   <div class="tall-50"></div>
 </div>
 
-<div class="modal" ng-class="{ 'active': $ctrl.enterNewThing }">
-  <header class="bar bar-nav">
-    <a class="icon icon-close pull-right" ng-click="$ctrl.enterNewThing = !$ctrl.enterNewThing"></a>
+
+<tab-bar></tab-bar>
+
+
+<div class="popover-wrap" ng-class="{ 'visible' : $ctrl.showPopUp }">
+
+  <div class="popover-bg"  ng-class="{ 'visible' : $ctrl.showPopUp }" ng-click="$ctrl.showPopUp = !$ctrl.showPopUp">
+  </div>
+  <div class="popover smooth-scroll display-block" ng-class="{ ' visible' : $ctrl.showPopUp }">
+    <header class="bar bar-nav">
+      <h1 class="title">Popover title</h1>
+    </header>
+    <ul class="table-view">
+      <li class="table-view-cell">Item1</li>
+      <li class="table-view-cell">Item2</li>
+      <li class="table-view-cell">Item3</li>
+      <li class="table-view-cell">Item4</li>
+      <li class="table-view-cell">Item5</li>
+      <li class="table-view-cell">Item6</li>
+      <li class="table-view-cell">Item7</li>
+      <li class="table-view-cell">Item8</li>
+    </ul>
+  </div>
+
+</div>
+
+
+
+  
+<div class="modal" ng-class="{ 'active': $ctrl.showModal }" >
+  <header class="bar bar-nav" ng-show="$ctrl.showModalRender">
+    <a class="icon icon-close pull-right" ng-click="$ctrl.toggleModal()"></a>
     <h1 class="title">Compose New Aphorism</h1>
   </header>
 
   <div class="content">
     <form>
-      <textarea ng-focus="$ctrl.enterNewThing" rows="5" placeholder="New Cultural Aphorism...." ng-model="$ctrl.newThing"></textarea>
-      <button class="btn btn-positive btn-block" ng-click="$ctrl.addThing(); $ctrl.enterNewThing = !$ctrl.enterNewThing;">Add</button>
+      <textarea ng-focus="$ctrl.showModal" rows="5" placeholder="New Cultural Aphorism...." ng-model="$ctrl.newThing"></textarea>
+      <button class="btn btn-positive btn-block" ng-click="$ctrl.addThing(); $ctrl.showModal = !$ctrl.showModal;">Add</button>
     </form>
 
   </div>
 </div>
-
-<tab-bar></tab-bar>
-
 
 

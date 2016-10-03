@@ -46,11 +46,58 @@ select:-webkit-autofill:focus {
 
 }
 
+.popover-bg{
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 12;
+  // content: '';
+
+  background-color: rgba(0,0,0,.3);
+  transition: opacity 1s;
+  opacity: 0;
+}
+
+.popover-bg.visible{
+  opacity: 1;
+}
+
+.popover-wrap{
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 11;
+
+  transform: translateY(100%);
+}
+.popover-wrap.visible{
+  transform: none;
+}
+.popover.display-block{
+  // border-radius: 0px;
+  box-shadow: none;
+}
+
+
+
+.display-block{
+  display: block !important;
+}
+.smooth-scroll{
+  -webkit-overflow-scrolling: touch;
+}
 
 // Component styles are injected through gulp
 /* inject:scss */
 @import 'admin/admin';
+@import 'app.animate';
 @import 'main/main';
+@import 'status/inBound/inBound';
+@import 'status/outBound/outBound';
 @import 'welcome/welcome';
 @import '../components/footer/footer';
 @import '../components/oauth-buttons/oauth-buttons';

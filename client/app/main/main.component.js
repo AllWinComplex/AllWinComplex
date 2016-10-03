@@ -15,7 +15,25 @@ export class MainController {
       socket.unsyncUpdates('thing');
     });
 
-    $scope.enterNewThing = false;
+    this.showModal = false;
+    this.showModalRender = false;
+    
+    this.$scope = $scope;
+
+  }
+
+  toggleModal (){
+    this.showModal = !this.showModal;
+    setTimeout(function(){
+      this.showModalRender = false;
+      this.$scope.$apply();
+
+      setTimeout(function(){
+        this.showModalRender = true;
+        this.$scope.$apply();
+      }.bind(this),200);
+
+    }.bind(this),0);
   }
 
   $onInit() {

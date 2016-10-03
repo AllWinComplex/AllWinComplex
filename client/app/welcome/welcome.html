@@ -6,13 +6,11 @@
 <div class="content" ng-if="$ctrl.isLoggedIn()">
 	<div class="awc-bgw">
 		<div class="awc-bg">
-			<welcome-canvas class="opacity50"></welcome-canvas>
+			<welcome-canvas></welcome-canvas>
 		</div>
 		<div class="awc-fg center-flex">
 			<h1 class="awc-welcome-banner">
-				Welcome Back!
-				<br>
-				{{ $ctrl.getCurrentUser().name }}
+				Hi! {{ $ctrl.getCurrentUser().name }}
 			</h1>
 		</div>
 	</div>
@@ -21,28 +19,19 @@
 <div class="content" ng-if="!$ctrl.isLoggedIn()">
 	<div class="awc-bgw">
 		<div class="awc-bg">
-			<welcome-canvas class="opacity50"></welcome-canvas>
+			<welcome-canvas></welcome-canvas>
 		</div>
-		<div class="awc-fg ">
+		<div class="awc-fg center-flex">
 			<div class="center-box">
-				<h1 class="awc-welcome-banner">
-					Login
+				<h1 class="awc-welcome-banner" ui-sref="login">
+					Enter System
 				</h1>
-				
-				<form>
-				  <input class="awc-input-grey" type="text" placeholder="email">
-				  <input class="awc-input-grey" type="password" placeholder="password">
-				  <button class="btn btn-positive btn-block">Login</button>
-				</form>
-
 			</div>
 		</div>
 	</div>
 </div>
 
 
-
-<tab-bar class=""></tab-bar>
-
+<tab-bar></tab-bar>
 
 

@@ -3,6 +3,7 @@
 export default class LoginController {
   user = {
     name: '',
+    username: '',
     email: '',
     password: ''
   };
@@ -23,12 +24,13 @@ export default class LoginController {
 
     if(form.$valid) {
       this.Auth.login({
+        username: this.user.username,
         email: this.user.email,
         password: this.user.password
       })
         .then(() => {
           // Logged in, redirect to home
-          this.$state.go('inbound');
+          this.$state.go('welcome');
         })
         .catch(err => {
           this.errors.login = err.message;
