@@ -95,7 +95,10 @@ select:-webkit-autofill:focus {
 /* inject:scss */
 @import 'admin/admin';
 @import 'app.animate';
+@import 'culture/culture/culture';
 @import 'main/main';
+@import 'more/more/more';
+@import 'people/people/people';
 @import 'status/inBound/inBound';
 @import 'status/outBound/outBound';
 @import 'welcome/welcome';

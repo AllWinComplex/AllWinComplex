@@ -1,0 +1,24 @@
+
+
+<div class="popover-wrap" ng-class="{ 'visible' : $ctrl.showFilterPop }">
+
+  <div class="popover-bg"  ng-class="{ 'visible' : $ctrl.showFilterPop }" ng-click="$ctrl.showFilterPop = !$ctrl.showFilterPop">
+  </div>
+  <div class="popover smooth-scroll display-block" ng-class="{ ' visible' : $ctrl.showFilterPop }">
+    <header class="bar bar-nav">
+      <h1 class="title">Filter Status</h1>
+    </header>
+    <ul class="table-view">
+      <li class="table-view-cell"
+		ng-repeat="filter in $ctrl.filters"
+      >
+      	{{ filter.val }} 
+		<div class="toggle" ng-click="$ctrl.setCurrentFilter(filter)" ng-class="{ 'active': filter.active }">
+	      <div class="toggle-handle"></div>
+	    </div>
+      </li>
+      
+    </ul>
+  </div>
+
+</div>

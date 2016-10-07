@@ -14,8 +14,13 @@ export default class SettingsController {
 
 
   /*@ngInject*/
-  constructor(Auth) {
+  constructor(Auth, $window) {
     this.Auth = Auth;
+    this.$window = $window;
+  }
+
+  goBack(){
+    this.$window.history.back();
   }
 
   changePassword(form) {

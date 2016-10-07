@@ -2,9 +2,15 @@
 
 export default class AdminController {
   /*@ngInject*/
-  constructor(User) {
+  constructor(User, Auth, $window) {
+    'ngInject';
     // Use the User $resource to fetch all users
     this.users = User.query();
+  	this.getCurrentUser = Auth.getCurrentUserSync;
+  	this.$window = $window;
+  }
+  goBack(){
+  	this.$window.history.back();
   }
 
   delete(user) {

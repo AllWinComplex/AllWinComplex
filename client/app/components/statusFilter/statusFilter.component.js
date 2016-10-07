@@ -1,13 +1,10 @@
 'use strict';
 const angular = require('angular');
 
-const uiRouter = require('angular-ui-router');
-
-import routes from './inBound.routes';
-
-export class InBoundComponent {
+export class statusFilterComponent {
   constructor(status) {
     'ngInject';
+
     this.showFilterPop = false;
 
     this.filters = status.filters;
@@ -15,14 +12,13 @@ export class InBoundComponent {
     this.setCurrentFilter = status.setCurrentFilter;
   
   }
-
 }
 
-export default angular.module('awcApp.inBound', [uiRouter])
-  .config(routes)
-  .component('inBound', {
-    template: require('./inBound.html'),
-    controller: InBoundComponent,
+export default angular.module('awcApp.statusFilter', [])
+  .component('statusFilter', {
+    template: require('./statusFilter.component.html'),
+    bindings: { showFilterPop: '=' },
+    controller: statusFilterComponent,
     controllerAs: '$ctrl'
   })
   .name;

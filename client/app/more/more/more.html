@@ -1,0 +1,50 @@
+<header class="bar bar-nav">
+  <h1 class="title animated fadeIn">Hello {{ $ctrl.getCurrentUser().name }}</h1>
+</header>
+
+
+<div class="content">
+	
+	<div class="card">
+	  <ul class="table-view">
+		<li class="table-view-cell table-view-divider"
+		ng-show="$ctrl.isAdmin()" 
+	    >Admin</li>
+	    <li class="table-view-cell"
+		ui-sref="admin"
+		ng-show="$ctrl.isAdmin()" 
+	    >Manage Users</li>
+	    
+	    <li class="table-view-cell table-view-divider">User</li>
+	    <li class="table-view-cell"
+		ui-sref="settings"
+	    ng-show="$ctrl.isLoggedIn()" 
+		>Change Password</li>
+	    <li class="table-view-cell"
+		ng-show="$ctrl.isLoggedIn()"
+	    ui-sref="logout({ referrer: 'welcome' })"
+	    >Logout</li>
+
+	    <li class="table-view-cell table-view-divider"
+		ng-show="$ctrl.isLoggedIn()" 
+	    >Fun</li>
+	    <li class="table-view-cell"
+		ui-sref="welcome"
+		ng-show="$ctrl.isLoggedIn()" 
+	    >Welcome Ball</li>
+	  </ul>
+	</div>
+
+	<div class="content-padded">
+		
+	</div>
+
+
+</div>
+
+
+
+<tab-bar class=""></tab-bar>
+
+
+

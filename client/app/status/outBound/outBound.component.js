@@ -6,10 +6,14 @@ const uiRouter = require('angular-ui-router');
 import routes from './outBound.routes';
 
 export class OutBoundComponent {
-  /*@ngInject*/
-  constructor() {
-    this.message = 'Hello';
+  constructor(status) {
+    'ngInject';
+    
+    this.filters = status.filters;
+    this.getCurrentFilter = status.getCurrentFilter;
+    this.setCurrentFilter = status.setCurrentFilter;
   }
+
 }
 
 export default angular.module('awcApp.outBound', [uiRouter])
@@ -17,6 +21,6 @@ export default angular.module('awcApp.outBound', [uiRouter])
   .component('outBound', {
     template: require('./outBound.html'),
     controller: OutBoundComponent,
-    controllerAs: 'outBoundCtrl'
+    controllerAs: '$ctrl'
   })
   .name;
