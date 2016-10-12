@@ -1,5 +1,5 @@
 .awc-welcome-banner {
-    font-size: 75px;
+    font-size: 10vmin;
     line-height: 1.5;
     font-family: 'Raleway', sans-serif;
     font-weight: 100;
@@ -57,6 +57,20 @@
   height: 100%;
 }
 
+.center-column{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.width-all{
+  width: 100%;
+}
+
+.height-all{
+  height: 100%;
+}
+
 .awc-input-grey{
   background-color: rgba(0,0,0,0.1) !important;
   border: 0 !important;
@@ -66,4 +80,5 @@
 .opacity50{
   opacity: 0.5;
 }
+
 

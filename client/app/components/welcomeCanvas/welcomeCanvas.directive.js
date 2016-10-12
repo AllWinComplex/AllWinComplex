@@ -42,7 +42,7 @@ export default angular.module('awcApp.welcomeCanvas', [])
       wireframeLinewidth: 1,
       side: THREE.BackSide,
       transparent: true,
-      opacity: 0.35,
+      opacity: 0.2,
     });
 
     inner = new THREE.Mesh(

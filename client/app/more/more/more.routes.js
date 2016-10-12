@@ -5,6 +5,7 @@ export default function($stateProvider) {
   $stateProvider
     .state('more', {
       url: '/more',
-      template: '<more></more>'
+      template: '<more></more>',
+      authenticate: true
     });
 }

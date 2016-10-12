@@ -233,7 +233,8 @@ module.exports = function makeWebpackConfig(options) {
      */
     config.postcss = [
         autoprefixer({
-            browsers: ['last 2 version']
+           browsers: ['last 2 version, iOS 7']
+            // browsers: ['iOS 8']
         })
     ];
 

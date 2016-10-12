@@ -5,6 +5,8 @@ export default function($stateProvider) {
   $stateProvider
     .state('outbound', {
       url: '/outBound',
-      template: '<out-bound></out-bound>'
+      template: '<out-bound></out-bound>',
+      authenticate: true
+	  
     });
 }

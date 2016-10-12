@@ -5,7 +5,6 @@ $ratchet-font-path: '/assets/fonts/ratchet';
 @import '~goratchet/sass/ratchet';
 @import '~goratchet/sass/theme-ios';
 
-
 @import url(https://fonts.googleapis.com/css?family=Raleway:100);
 
 // @import url(http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,900|Roboto:300,500,700,900);
@@ -13,7 +12,6 @@ $ratchet-font-path: '/assets/fonts/ratchet';
 /**
  * App-wide Styles
  */
-
 .browserupgrade {
   margin: 0.2em 0;
   background: #ccc;
@@ -46,55 +44,11 @@ select:-webkit-autofill:focus {
 
 }
 
-.popover-bg{
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 12;
-  // content: '';
-
-  background-color: rgba(0,0,0,.3);
-  transition: opacity 1s;
-  opacity: 0;
-}
-
-.popover-bg.visible{
-  opacity: 1;
-}
-
-.popover-wrap{
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 11;
-
-  transform: translateY(100%);
-}
-.popover-wrap.visible{
-  transform: none;
-}
-.popover.display-block{
-  // border-radius: 0px;
-  box-shadow: none;
-}
-
-
-
-.display-block{
-  display: block !important;
-}
-.smooth-scroll{
-  -webkit-overflow-scrolling: touch;
-}
-
 // Component styles are injected through gulp
 /* inject:scss */
 @import 'admin/admin';
 @import 'app.animate';
+@import 'app.ui';
 @import 'culture/culture/culture';
 @import 'main/main';
 @import 'more/more/more';
@@ -106,5 +60,3 @@ select:-webkit-autofill:focus {
 @import '../components/oauth-buttons/oauth-buttons';
 /* endinject */
 
-
-@import './app.animate.scss';

@@ -9,8 +9,9 @@
       <h1 class="title">Filter Status</h1>
     </header>
     <ul class="table-view">
-      <li class="table-view-cell"
-		ng-repeat="filter in $ctrl.filters"
+      <li ng-class="{ 'animated fadeInLeft' : $ctrl.showFilterPop }" class="table-view-cell  delay-{{ filterKey }}"
+
+		ng-repeat="(filterKey, filter) in $ctrl.filters"
       >
       	{{ filter.val }} 
 		<div class="toggle" ng-click="$ctrl.setCurrentFilter(filter)" ng-class="{ 'active': filter.active }">

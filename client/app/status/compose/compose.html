@@ -1,0 +1,20 @@
+<header class="bar bar-nav">
+  
+  <h1 class="title">Compose {{ $ctrl.getStatusCompose($ctrl.$stateParams.cID).val }}</span></h1>
+  <a class="icon icon-close pull-right" ng-click="$ctrl.goBack()"></a>
+  
+</header>
+
+<div class="content">
+	<form>
+      <textarea autofocus rows="4" placeholder="Start Writing here...." ng-model="$ctrl.status.draft.note"></textarea>
+      <button class="btn btn-positive btn-block" ui-sref="receipient">Send to...</button>
+    </form>
+	
+
+</div>
+
+<tab-bar></tab-bar>
+
+<status-filter show-filter-pop="$ctrl.showFilterPop"></status-filter>
+

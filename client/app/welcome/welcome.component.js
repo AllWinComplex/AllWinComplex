@@ -10,7 +10,7 @@ import routes from './welcome.routes';
 
 export class WelcomeComponent {
   /*@ngInject*/
-  constructor(Auth) {
+  constructor(Auth, $state) {
     'ngInject';
 
     this.isLoggedIn = Auth.isLoggedInSync;
@@ -19,9 +19,7 @@ export class WelcomeComponent {
 
     this.message = 'Hello';
 
-
   }
-
 
 }
 
@@ -33,3 +31,6 @@ export default angular.module('awcApp.welcome', [uiRouter])
     controllerAs: '$ctrl'
   })
   .name;
+
+
+

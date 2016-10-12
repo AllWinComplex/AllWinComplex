@@ -5,6 +5,8 @@ export default function($stateProvider) {
   $stateProvider
     .state('inbound', {
       url: '/inBound',
-      template: '<in-bound></in-bound>'
+      template: '<in-bound></in-bound>',
+      authenticate: true
+      
     });
 }

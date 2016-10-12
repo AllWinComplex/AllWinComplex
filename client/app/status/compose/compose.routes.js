@@ -3,9 +3,9 @@
 export default function($stateProvider) {
   'ngInject';
   $stateProvider
-    .state('people', {
-      url: '/people',
-      template: '<people></people>',
+    .state('compose', {
+      url: '/compose/:cID',
+      template: '<compose></compose>',
       authenticate: true
     });
 }

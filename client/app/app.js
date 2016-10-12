@@ -26,13 +26,14 @@ import footer from '../components/footer/footer.component';
 import main from './main/main.component';
 import welcome from './welcome/welcome.component';
 
-
 import more from './more/more/more.component';
 import culture from './culture/culture/culture.component';
 import people from './people/people/people.component';
 
 import status from './status/status/status.service';
 
+import receipient from './status/receipient/receipient.component';
+import compose from './status/compose/compose.component';
 import inBound from './status/inBound/inBound.component';
 import outBound from './status/outBound/outBound.component';
 
@@ -50,7 +51,9 @@ import './app.scss';
 angular.module('awcApp', [
     status, statusFilter,
     more, culture, people,
-    inBound, outBound,
+
+    inBound, outBound, compose, receipient,
+    
     welcome, welcomeCanvas, 
     ngCookies, ngResource, ngSanitize, 'btford.socket-io', uiRouter, _Auth,
     account, admin, navbar, footer, main, constants, socket, util, tabBar
