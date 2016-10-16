@@ -10,7 +10,8 @@ export class StatusService {
 		this.draft = {
 			type: '',
 			note: '',
-			receipient: [],
+			receipientID: '',
+			senderID: ''
 		};
 
 	    this.starters = [
@@ -72,6 +73,13 @@ export class StatusService {
 
 	clearDraft(){
 		this.draft = '';
+	}
+
+	updateDraft({ type, note, receipientID, senderID }){
+		this.draft.type = type || this.draft.type;
+		this.draft.note = note || this.draft.note;
+		this.draft.receipientID = receipientID || this.draft.receipientID;
+		this.draft.senderID = senderID || this.draft.senderID;
 	}
 
 	getStatusCompose(key){

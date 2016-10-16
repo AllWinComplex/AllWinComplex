@@ -32,6 +32,8 @@ import people from './people/people/people.component';
 
 import status from './status/status/status.service';
 
+import search from './status/search/search.component';
+import choose from './status/choose/choose.component';
 import receipient from './status/receipient/receipient.component';
 import compose from './status/compose/compose.component';
 import inBound from './status/inBound/inBound.component';
@@ -52,7 +54,7 @@ angular.module('awcApp', [
     status, statusFilter,
     more, culture, people,
 
-    inBound, outBound, compose, receipient,
+    inBound, outBound, compose, receipient, choose, search,
     
     welcome, welcomeCanvas, 
     ngCookies, ngResource, ngSanitize, 'btford.socket-io', uiRouter, _Auth,
@@ -64,12 +66,16 @@ angular.module('awcApp', [
     // Redirect to login if route requires auth and you're not logged in
 
     $rootScope.$on('$stateChangeStart', function(event, next) {
+      
       Auth.isLoggedIn(function(loggedIn) {
         if(next.authenticate && !loggedIn) {
           $location.path('/login');
         }
       });
+
     });
+  
+
   });
 
 angular.element(document)

@@ -6,11 +6,10 @@ const uiRouter = require('angular-ui-router');
 import routes from './compose.routes';
 
 export class ComposeComponent {
-  constructor(status, $stateParams) {
+  constructor(status, $state, $stateParams) {
     'ngInject';
+    this.$state = $state;
     this.$stateParams = $stateParams;
-
-    status.draft.type = $stateParams.cid;
 
     this.status = status;
     this.filters = status.filters;
@@ -20,6 +19,13 @@ export class ComposeComponent {
     this.clearDraft = status.clearDraft;
   }
 
+  saveNext(){
+    this.status.updateDraft({
+      type: this.$stateParams.cID,
+    });
+    
+    this.$state.go('receipient');
+  }
 
   goBack(){
     window.history.back();

@@ -9,9 +9,11 @@
 			<welcome-canvas></welcome-canvas>
 		</div>
 		<div class="awc-fg center-flex">
-			<h1 class="awc-welcome-banner animated tada infinitne" ui-sref="inbound">
-				Hi! {{ $ctrl.getCurrentUser().name }}
-			</h1>
+			<div class="animated tada infinite">
+				<h1 class="awc-welcome-banner" ui-sref="inbound">
+					Hi! {{ $ctrl.getCurrentUser().name }}
+				</h1>
+			</div>
 		</div>
 	</div>
 </div>

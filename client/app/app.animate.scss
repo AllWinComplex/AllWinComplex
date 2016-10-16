@@ -1,6 +1,6 @@
 @for $i from 0 through 35 {
   .delay-#{$i}{
-    animation-delay: $i * 0.25s;
+    animation-delay: $i * 0.15s;
   }
 }
 
@@ -76,6 +76,24 @@
 
 .fadeInLeft {
   animation-name: fadeInLeft;
+}
+
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translate3d(20%, 0, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+
+.fadeInRight {
+  animation-name: fadeInRight;
 }
 
 

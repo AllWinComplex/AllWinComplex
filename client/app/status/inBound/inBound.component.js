@@ -13,7 +13,7 @@ export class InBoundComponent {
     this.filters = status.filters;
     this.getCurrentFilter = status.getCurrentFilter;
     this.setCurrentFilter = status.setCurrentFilter;
-  
+    
   }
 
 }

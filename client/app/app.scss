@@ -53,8 +53,12 @@ select:-webkit-autofill:focus {
 @import 'main/main';
 @import 'more/more/more';
 @import 'people/people/people';
+@import 'status/choose/choose';
+@import 'status/compose/compose';
 @import 'status/inBound/inBound';
 @import 'status/outBound/outBound';
+@import 'status/receipient/receipient';
+@import 'status/search/search';
 @import 'welcome/welcome';
 @import '../components/footer/footer';
 @import '../components/oauth-buttons/oauth-buttons';

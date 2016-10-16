@@ -17,26 +17,26 @@ export class OutBoundComponent {
     this.setCurrentFilter = status.setCurrentFilter;
 
     this.$scope = $scope;
-  }
-
-
-  toggleModal (mode){
-    this.showModal = !this.showModal;
-    this.showModalRender = false;
-    this.showModalMode = 'starter';
-
-    setTimeout(function(){
-      this.showModalRender = false;
-      this.$scope.$apply();
-
-      setTimeout(function(){
-        this.showModalRender = true;
-        this.$scope.$apply();
-      }.bind(this),0);
-
-    }.bind(this),350);
 
   }
+
+  // toggleModal (mode){
+  //   this.showModal = !this.showModal;
+  //   this.showModalRender = false;
+  //   this.showModalMode = 'starter';
+
+  //   setTimeout(function(){
+  //     this.showModalRender = false;
+  //     this.$scope.$apply();
+
+  //     setTimeout(function(){
+  //       this.showModalRender = true;
+  //       this.$scope.$apply();
+  //     }.bind(this),0);
+
+  //   }.bind(this),350);
+
+  // }
 
 }
 

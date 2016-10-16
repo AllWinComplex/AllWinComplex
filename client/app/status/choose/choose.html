@@ -1,0 +1,26 @@
+<header class="bar bar-nav">
+  
+  <h1 class="title">Select Care Giving</h1>
+  <a class="icon icon-left-nav pull-left" ng-click="$ctrl.goBack()"></a>
+
+</header>
+
+<div class="content">
+
+	<div class="card" >
+	  <ul class="table-view">
+
+	    <li class="table-view-cell animated fadeInUp delay-{{ startKey }}" ng-repeat="(startKey, start) in $ctrl.starters"
+	    ui-sref="compose({ cID: start.key })">
+	      <a class="navigate-right">
+	        {{ start.val }}
+	      </a>
+	    </li>
+
+	  </ul>
+	</div>
+
+</div>
+
+
+<tab-bar></tab-bar>

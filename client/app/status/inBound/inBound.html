@@ -1,15 +1,17 @@
 <header class="bar bar-nav">
-  <h1 class="title"><span  ng-click="$ctrl.showFilterPop = !!!$ctrl.showFilterPop">InBound {{ $ctrl.getCurrentFilter().title }} <span class="icon icon-caret"></span> </span></h1>
-	
   
+  <h1 class="title"><span  ng-click="$ctrl.showFilterPop = !!!$ctrl.showFilterPop">InBound {{ $ctrl.getCurrentFilter().title }} <span class="icon icon-caret"></span> </span></h1>
+  <a class="icon icon-compose pull-right" ui-sref="choose"></a>
+  <a class="icon icon-search pull-left" ui-sref="search"></a>
 
 </header>
 
 <div class="content">
-	
+  Abc
 </div>
 
 <tab-bar></tab-bar>
+
 
 <status-filter show-filter-pop="$ctrl.showFilterPop"></status-filter>
 
