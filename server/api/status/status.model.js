@@ -1,13 +1,23 @@
 'use strict';
 
-import mongoose from 'mongoose';
+import mongoose, {Schema} from 'mongoose';
+
+var mongoosePaginate = require('mongoose-paginate');
+
 
 var StatusSchema = new mongoose.Schema({
-  senderID: String,
-  receipientID: String,
+  sender: 	{ type: Schema.Types.ObjectId, ref: 'User' },
+  receipient: { type: Schema.Types.ObjectId, ref: 'User' },
   type: String,
-  content: String,
-  active: Boolean
+  note: String,
+  active: {
+  	type: Boolean,
+  	default: true
+  }
+},{
+    timestamps: true
 });
+
+StatusSchema.plugin(mongoosePaginate);
 
 export default mongoose.model('Status', StatusSchema);

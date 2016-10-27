@@ -8,6 +8,7 @@ import ngSanitize from 'angular-sanitize';
 import 'angular-socket-io';
 
 import uiRouter from 'angular-ui-router';
+import 'ngStorage';
 
 // import ngMessages from 'angular-messages';
 // import ngValidationMatch from 'angular-validation-match';
@@ -38,6 +39,7 @@ import receipient from './status/receipient/receipient.component';
 import compose from './status/compose/compose.component';
 import inBound from './status/inBound/inBound.component';
 import outBound from './status/outBound/outBound.component';
+import detail from './status/detail/detail.component';
 
 import constants from './app.constants';
 import util from '../components/util/util.module';
@@ -54,10 +56,10 @@ angular.module('awcApp', [
     status, statusFilter,
     more, culture, people,
 
-    inBound, outBound, compose, receipient, choose, search,
+    inBound, outBound, detail, compose, receipient, choose, search,
     
     welcome, welcomeCanvas, 
-    ngCookies, ngResource, ngSanitize, 'btford.socket-io', uiRouter, _Auth,
+    'ngStorage', ngCookies, ngResource, ngSanitize, 'btford.socket-io', uiRouter, _Auth,
     account, admin, navbar, footer, main, constants, socket, util, tabBar
   ])
   .config(routeConfig)

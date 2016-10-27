@@ -1,17 +1,59 @@
 <header class="bar bar-nav">
-  
   <h1 class="title"><span  ng-click="$ctrl.showFilterPop = !!!$ctrl.showFilterPop">InBound {{ $ctrl.getCurrentFilter().title }} <span class="icon icon-caret"></span> </span></h1>
+	
   <a class="icon icon-compose pull-right" ui-sref="choose"></a>
   <a class="icon icon-search pull-left" ui-sref="search"></a>
 
 </header>
 
 <div class="content">
-  Abc
+  
+	<div class="card">
+	  <ul class="table-view">
+			
+			<div ng-show="($ctrl.inBound | kindnessFilter:$ctrl.getCurrentFilter().key).length == 0">
+			
+				<li class="table-view-cell media animated fadeInUp" 
+						ui-sref="choose"
+				>
+					~ No Results Yet ~
+				</li>
+
+				<li class="table-view-cell media animated fadeInUp delay-2" 
+						ui-sref="choose"
+				>
+						You can always be the first to give care and detach from receving favor in return...
+				</li>
+			
+			</div>
+			
+			<li class="table-view-cell media animated fadeInUp delay-{{ itemKey }}" 
+	    ng-repeat="(itemKey, item) in $ctrl.inBound | kindnessFilter:$ctrl.getCurrentFilter().key"
+	    ui-sref="detail({ sID: item._id })">
+	      
+		      <a class="navigate-right">
+		     		<div class="media-body">
+	          	{{ $ctrl.getStatusCompose(item.type).title }} To: {{ item.receipient.name }}
+			        <p>{{ item.note }} - {{ item.sender.name }}</p>
+			   		</div>
+		      </a>
+		     
+		    </li>
+	  </ul>
+
+	  
+	 
+
+	</div>
+    <div class="tall-50"></div>
+
+  <!-- <div ng-if="true" class="content-padded">
+  	<pre>{{ $ctrl.inBound | json }}</pre>
+  </div> -->
+	
 </div>
+
 
 <tab-bar></tab-bar>
 
-
 <status-filter show-filter-pop="$ctrl.showFilterPop"></status-filter>
-

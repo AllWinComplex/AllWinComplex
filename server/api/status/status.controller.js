@@ -12,6 +12,7 @@
 
 import jsonpatch from 'fast-json-patch';
 import Status from './status.model';
+import User from '../user/user.model';
 
 function respondWithResult(res, statusCode) {
   statusCode = statusCode || 200;
@@ -63,6 +64,64 @@ function handleError(res, statusCode) {
   };
 }
 
+export function getWorld(req, res){
+  return User.find({
+    username: 'world',
+  }, '-salt -password').exec()
+    .then(respondWithResult(res))
+    .catch(handleError(res));
+}
+
+export function inBound(req, res) {
+  var q = {
+    receipient: req.user._id
+  };
+
+  if (typeof req.params.fType !== 'undefined' && req.params.fType !== 'all'){
+    q.type = req.params.fType;
+  }
+
+  return Status.find(q).sort('-createdAt')
+      .skip(parseInt(req.params.offset || '0'))
+      .limit(50)
+      .populate('sender', '-salt -password')
+      .populate('receipient', '-salt -password')
+      .exec()
+      .then(respondWithResult(res))
+      .catch(handleError(res));
+}
+
+export function outBound(req, res) {
+  var q = {
+    sender: req.user._id
+  };
+
+  if (typeof req.params.fType !== 'undefined' && req.params.fType !== 'all'){
+    q.type = req.params.fType;
+  }
+
+  return Status.find(q).sort('-createdAt')
+    .skip(parseInt(req.params.offset || '0'))
+    .limit(50)
+    .populate('sender', '-salt -password')
+    .populate('receipient', '-salt -password')
+    .exec()
+    .then(respondWithResult(res))
+    .catch(handleError(res));
+
+  // return Status.find({
+  //   sender: req.user._id
+  // }).sort('-createdAt')
+  //   .populate('receipient', '-salt -password')
+  //   .limit(50)
+  //   .exec()
+  //   .then(respondWithResult(res))
+  //   .catch(handleError(res));
+
+
+}
+
+
 // Gets a list of Statuss
 export function index(req, res) {
   return Status.find().exec()
@@ -72,7 +131,10 @@ export function index(req, res) {
 
 // Gets a single Status from the DB
 export function show(req, res) {
-  return Status.findById(req.params.id).exec()
+  return Status.findById(req.params.id)
+    .populate('sender', '-salt -password')
+    .populate('receipient', '-salt -password')
+    .exec()
     .then(handleEntityNotFound(res))
     .then(respondWithResult(res))
     .catch(handleError(res));
@@ -110,7 +172,10 @@ export function patch(req, res) {
 
 // Deletes a Status from the DB
 export function destroy(req, res) {
-  return Status.findById(req.params.id).exec()
+  return Status.find({
+    _id: req.params.id,
+    sender: req.user._id
+  }).exec()
     .then(handleEntityNotFound(res))
     .then(removeEntity(res))
     .catch(handleError(res));

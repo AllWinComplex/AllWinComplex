@@ -8,5 +8,14 @@ export default function($stateProvider) {
       template: '<out-bound></out-bound>',
       authenticate: true
 	  
-    });
+    })
+
+    .state('outboundSkip', {
+      url: '/outBound/skip/:skipNum',
+      template: '<out-bound></out-bound>',
+      authenticate: true
+    })
+
+
+    ;
 }

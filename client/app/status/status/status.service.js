@@ -1,18 +1,24 @@
 'use strict';
 const angular = require('angular');
 
+
+
 /*@ngInject*/
 export class StatusService {
 	// AngularJS will instantiate a singleton by calling "new" on this function
-	constructor(){
+	constructor($sessionStorage, $http){
 		'ngInject';
+		this.$http = $http;
 
-		this.draft = {
+		$sessionStorage.awcDraft = $sessionStorage.awcDraft || {
 			type: '',
 			note: '',
-			receipientID: '',
-			senderID: ''
+			receipient: '',
+			sender: ''
 		};
+
+		this.draft = $sessionStorage.awcDraft;
+
 
 	    this.starters = [
 			{
@@ -71,15 +77,11 @@ export class StatusService {
 
 	}
 
-	clearDraft(){
-		this.draft = '';
-	}
-
-	updateDraft({ type, note, receipientID, senderID }){
+	updateDraft({ type, note, receipient, sender }){
 		this.draft.type = type || this.draft.type;
 		this.draft.note = note || this.draft.note;
-		this.draft.receipientID = receipientID || this.draft.receipientID;
-		this.draft.senderID = senderID || this.draft.senderID;
+		this.draft.receipient = receipient || this.draft.receipient;
+		this.draft.sender = sender || this.draft.sender;
 	}
 
 	getStatusCompose(key){
@@ -87,7 +89,6 @@ export class StatusService {
     		return val.key === key;
     	})[0];
     }
-
     getCurrentFilter(){
     	return this.filters.filter(function(val){
     		return val.active === true;
@@ -101,6 +102,43 @@ export class StatusService {
     			val.active = false;
     		}
     	});
+    }
+    createStatus(){
+    	return this.$http({
+    		method: 'POST',
+    		url: '/api/status',
+    		data: this.draft
+    	});
+    }
+    deleteStatus(id){
+    	return this.$http({
+    		method: 'DELETE',
+    		url: '/api/status/' + id,
+    	});
+    }
+    getWorld(){
+    	return this.$http({
+    		method: 'GET',
+    		url: '/api/status/world',
+    	});
+    }
+	viewStatus(id){
+    	return this.$http({
+    		method: 'GET',
+    		url: '/api/status/' + id,
+    	});
+    }
+    viewMyOutBoundStatus(offset, filterType){
+    	return this.$http({
+    		method: 'GET',
+    		url: '/api/status/me/outBound/skip/' + ((!isNaN(offset)) ? offset : 0) + '/filter/' + (filterType || 'all'),
+    	});
+    }
+    viewMyInBoundStatus(offset, filterType){
+		return this.$http({
+			method: 'GET',
+			url: '/api/status/me/inBound/skip/' + ((!isNaN(offset)) ? offset : 0) + '/filter/' + (filterType || 'all'),
+		});
     }
 
 }

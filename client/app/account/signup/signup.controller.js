@@ -5,6 +5,7 @@ import angular from 'angular';
 export default class SignupController {
   user = {
     name: '',
+    username: '',
     email: '',
     password: ''
   };
@@ -30,7 +31,7 @@ export default class SignupController {
       })
         .then(() => {
           // Account created, redirect to home
-          this.$state.go('main');
+          this.$state.go('welcome');
         })
         .catch(err => {
           err = err.data;

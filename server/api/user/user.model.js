@@ -7,6 +7,10 @@ import mongoose, {Schema} from 'mongoose';
 const authTypes = ['github', 'twitter', 'facebook', 'google'];
 
 var UserSchema = new Schema({
+  npc: {
+    type: Boolean,
+    default: false
+  },
   name: String,
   username: {
     type: String,

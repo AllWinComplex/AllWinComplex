@@ -7,6 +7,9 @@
 import Thing from '../api/thing/thing.model';
 import User from '../api/user/user.model';
 
+import Status from '../api/status/status.model';
+
+
 Thing.find({}).remove()
   .then(() => {
     Thing.create({
@@ -55,7 +58,47 @@ User.find({}).remove()
       email: 'admin@example.com',
       password: 'admin'
     })
-    .then(() => {
-      console.log('finished populating users');
+    .then((data) => {
+      console.log('finished populating users', data);
+      
+
+      User.create({
+        npc: true,
+        provider: 'local',
+        username: 'world',
+        role: 'user',
+        name: 'The World',
+        email: 'world@example.com',
+        password: 'world'
+      }).then((data2) => {
+
+        Status.find({}).remove()
+          
+          .then(() => {
+
+            Status.create({
+              sender: data._id,
+              receipient: data2._id,
+              type: 'thanks',
+              note: 'Thank you!!! woop woop yayyy',
+              active: true
+            },
+            {
+              sender: data._id,
+              receipient: data2._id,
+              type: 'kudos',
+              note: 'Kudos to you!! :D Thank you!!! woop woop yayyy',
+              active: true
+            }
+            );
+
+          });
+
+
+      })
+
+      
+
+
     });
   });
